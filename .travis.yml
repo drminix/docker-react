@@ -11,6 +11,16 @@ before_install: # series of commands that run before test
 #run test
 script: #travis.ci will watch the output of every command. If the exit value is other than 0, it assumes it failed
   - docker run -e CI=true drminix/docker-react npm run test
-  
-#deploy to AWS
 
+#deploy to AWS
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker-react"
+  env: "DockerReact-env"
+  bucket_name: "elasticbeanstalk-us-east-2-257803754446"
+  bucket_path: "docker-react"
+  on:
+    branch: master #deployed on when code is pushed to master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
