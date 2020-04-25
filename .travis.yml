@@ -1,0 +1,16 @@
+#we need a copy of docker cli set
+language: generic
+sudo: required #need super user permission in order to execute docker command
+services:
+  - docker #install a copy of docker inside the container
+
+#build image for testing
+before_install: # series of commands that run before test
+  - docker build -t drminix/docker-react -f Dockerfile.dev . 
+  
+#run test
+script: #travis.ci will watch the output of every command. If the exit value is other than 0, it assumes it failed
+  - docker run -e CI=true drminix/docker-react npm run test
+  
+#deploy to AWS
+
