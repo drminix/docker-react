@@ -16,10 +16,10 @@ script: #travis.ci will watch the output of every command. If the exit value is 
 deploy:
   provider: elasticbeanstalk
   region: "us-east-2"
-  app: "docker-react"
-  env: "DockerReact-env"
+  app: "docker-react2"
+  env: "DockerReact2-env"
   bucket_name: "elasticbeanstalk-us-east-2-257803754446"
-  bucket_path: "docker-react"
+  bucket_path: "docker-react2"
   on:
     branch: master #deployed on when code is pushed to master
   access_key_id: $AWS_ACCESS_KEY
